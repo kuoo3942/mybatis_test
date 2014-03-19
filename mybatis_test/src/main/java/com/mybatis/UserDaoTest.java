@@ -7,7 +7,6 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.apache.ibatis.type.TypeHandler;
 import org.junit.Test;
 
 import com.mybatis.conf.Users;
@@ -69,7 +68,7 @@ public class UserDaoTest {
 			UserDao userDao = session.getMapper(UserDao.class) ;
 			
 			Users user = new Users() ;
-			user.setUsername("╣таию╚");
+			user.setUsername("О©╫О©╫О©╫О©╫+");
 			user.setPassword("11111");
 			int result = userDao.insert(user) ;
 			System.out.println("result : [" + String.valueOf(result) + "]");
@@ -91,7 +90,7 @@ public class UserDaoTest {
 			UserDao userDao = session.getMapper(UserDao.class) ;
 			
 			Users user = new Users() ;
-			user.setUsername("╣таию╚");
+			user.setUsername("О©╫О©╫О©╫О©╫+");
 			user.setPassword("22222");
 			int result = userDao.update(user) ;
 			System.out.println("result : [" + String.valueOf(result) + "]");
@@ -111,7 +110,7 @@ public class UserDaoTest {
 		try{
 			session = getSession() ;
 			UserDao userDao = session.getMapper(UserDao.class) ;
-			int result = userDao.delete("╣таию╚") ;
+			int result = userDao.delete("О©╫О©╫О©╫О©╫+") ;
 			System.out.println("result : [" + String.valueOf(result) + "]");
 			session.commit();
 		}catch(Exception e){
@@ -130,7 +129,7 @@ public class UserDaoTest {
 		try{
 			session = getSession() ;
 			UserDao userDao = session.getMapper(UserDao.class) ;
-			Users user = userDao.findByUserName("╣таию╚") ;
+			Users user = userDao.findByUserName("О©╫О©╫О©╫О©╫+") ;
 			System.out.println("result : [" + String.valueOf(user.getPassword()) + "]");
 			session.commit();
 		}catch(Exception e){
