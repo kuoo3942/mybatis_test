@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- 
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+        <property name="url" value="jdbc:oracle:thin:@10.6.168.57:1521:CDV"></property>
+        <property name="username" value="ims"></property>
+        <property name="password" value="0p-0p-0p-"></property>
+    </bean> 
+    
+    
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/sample"></property>
+    </bean> 
+    
+    -->
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" >
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+        <property name="url" value="jdbc:oracle:thin:@10.6.168.57:1521:CDV"></property>
+        <property name="username" value="ims"></property>
+        <property name="password" value="0p-0p-0p-"></property>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
+        <property name="configLocation" value="classpath:myBatis-configuration.xml"></property>
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <import resource="service/application_service.xml"/>
+    <import resource="dao/application_dao.xml"/>
+
+</beans>

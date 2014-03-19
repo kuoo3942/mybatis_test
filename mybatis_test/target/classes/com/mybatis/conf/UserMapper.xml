@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.mybatis.dao.UserDao" >
+    
+    <select id="countAll" resultType="int">
+        select count(*) from users
+    </select>
+    
+    <select id="selectAll" resultType="com.mybatis.conf.Users">
+        select * from users order by username asc
+    </select>
+    
+    <insert id="insert" parameterType="com.mybatis.conf.Users">
+        insert into users(username,password,name,department,phone,email,rolename,productionline) 
+        	values(#{username},#{password},#{name},#{department},#{phone},#{email},#{rolename},#{productionline})
+    </insert>
+    
+    <update id="update" parameterType="com.mybatis.conf.Users">
+        update users set username=#{username},password=#{password},name=#{name},department=#{department},phone=#{phone},email=#{email},rolename=#{rolename},productionline=#{productionline} 
+        		where username=#{username}
+    </update>
+    
+    <delete id="delete" parameterType="String">
+        delete from users where username=#{username}
+    </delete>
+    
+    <select id="findByUserName" parameterType="String" resultType="com.mybatis.conf.Users">
+        select * from users where username=#{username}
+    </select>
+</mapper>
